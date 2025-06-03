@@ -11,7 +11,7 @@ class BaseEntity<T> {
 
   factory BaseEntity.fromJson(json) {
     return BaseEntity(
-      code: json["code"],
+      code: json["code"].toString(),
       message: json["msg"],
       // data值需要经过工厂转换为我们传进来的类型
       data: EntityFactory.generateOBJ<T>(json) ?? (throw Exception("Failed to generate object of type T")),

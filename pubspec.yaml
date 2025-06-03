@@ -19,6 +19,8 @@ dependencies:
   fluro: ^2.0.5
   provider: ^6.0.1
   smooth_page_indicator: 1.1.0
+  carousel_slider: ^5.0.0
+  marquee: ^2.2.3
 
 flutter:
   uses-material-design: true

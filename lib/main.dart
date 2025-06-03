@@ -14,7 +14,6 @@ import 'http.dart';
 import 'package:flutter/material.dart';
 import 'dart:math' as math;
 
-
 void main() {
   dio.interceptors.add(LogInterceptor());
   runMPApp(const MyApp());
@@ -99,11 +98,21 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     return ThemeProvider(
       themeData: ThemeData(
         useMaterial3: true,
         primarySwatch: Colors.blue,
+        colorScheme: ColorScheme(
+          brightness: Brightness.light,
+          primary: Colors.lightBlue.shade100,
+          onPrimary: Colors.white,
+          secondary: Colors.lightBlue.shade800,
+          onSecondary: Colors.white,
+          error: Colors.red,
+          onError: Colors.white,
+          surface: Colors.white,
+          onSurface: Colors.black,
+        ),
         appBarTheme: AppBarTheme(
           color: Colors.lightBlue.shade800,
           foregroundColor: Colors.white,
@@ -113,39 +122,31 @@ class MyApp extends StatelessWidget {
         scaffoldBackgroundColor: Colors.white,
       ),
       child: MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        useMaterial3: true,
-        primarySwatch: Colors.blue,
-        primaryColor: Colors.lightBlue.shade100,
-        appBarTheme: AppBarTheme(
-          color: Colors.lightBlue,
-          foregroundColor: Colors.white,
-          elevation: 5.0,
-          centerTitle: false,
-        ),
-        scaffoldBackgroundColor: Colors.white,
-        /**
+        title: 'Flutter Demo',
+        theme: ThemeData(
+          useMaterial3: true,
+          primarySwatch: Colors.blue,
+          primaryColor: Colors.lightBlue.shade100,
+          appBarTheme: AppBarTheme(
+            color: Colors.lightBlue,
+            foregroundColor: Colors.white,
+            elevation: 5.0,
+            centerTitle: false,
+          ),
+          scaffoldBackgroundColor: Colors.white,
+          /**
          * 使用 iOS 风格页面转场
          */
-        platform: TargetPlatform.iOS,
-      ),
-      routes: Routes.getRoutes(),
-      home: const MyHomePage(title: 'MPFlutter Awesome Page'),
-      /**
+          platform: TargetPlatform.iOS,
+        ),
+        routes: Routes.getRoutes(),
+        home: const MyHomePage(title: 'MPFlutter Awesome Page'),
+        /**
        * 务必保留 MPNavigatorObserver，否则小程序的路由会出问题。
        */
-      navigatorObservers: [MPNavigatorObserver()],
-    ),
+        navigatorObservers: [MPNavigatorObserver()],
+      ),
+      
     );
-
-
-
-
   }
 }
-
-
-
-
-
